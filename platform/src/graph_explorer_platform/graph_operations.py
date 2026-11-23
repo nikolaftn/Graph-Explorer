@@ -21,3 +21,16 @@ def induced_subgraph(graph, node_ids):
             selected_edges.append(edge)
 
     return Graph(selected_nodes, selected_edges, graph.directed)
+
+
+
+def search_graph(graph,query):
+    node_ids=[]
+    for node in graph.nodes.values():
+        for attribute,value in node.attributes.values():
+            if query in attribute or query in str(value):
+                node_ids.append(node.id)
+                break
+
+
+    return induced_subgraph(graph,node_ids)
