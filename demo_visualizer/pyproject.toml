@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-explorer-demo-visualizer"
+version = "0.1.0"
+description = "Demo visualizer plugin for Graph Explorer"
+requires-python = ">=3.10"
+dependencies = ["graph-explorer-api"]
+
+[project.entry-points."graph_explorer.visualizers"]
+demo = "graph_explorer_demo_visualizer.plugin:DemoVisualizer"
+
+[tool.setuptools.packages.find]
+where = ["src"]
