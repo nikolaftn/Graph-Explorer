@@ -3,9 +3,17 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
+from graph_explorer_api.models.graph import Graph
+
 
 class DataSourcePlugin(ABC):
     """Base class for data source plugins."""
+
+    @property
+    @abstractmethod
+    def id(self) -> str:
+        """Unique plugin identifier."""
+        raise NotImplementedError
 
     @property
     @abstractmethod
@@ -14,6 +22,6 @@ class DataSourcePlugin(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def load(self, source: Any) -> Any:
+    def load(self, source: Any) -> Graph:
         """Load a source and return a graph model."""
         raise NotImplementedError

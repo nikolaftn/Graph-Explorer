@@ -1,11 +1,18 @@
-"""Interface for plugins that render graphs."""
+"""Interface for plugins that visualize graphs."""
 
 from abc import ABC, abstractmethod
-from typing import Any
+
+from graph_explorer_api.models.graph import Graph
 
 
 class VisualizerPlugin(ABC):
-    """Base class for graph visualizer plugins."""
+    """Base class for visualizer plugins."""
+
+    @property
+    @abstractmethod
+    def id(self) -> str:
+        """Unique plugin identifier."""
+        raise NotImplementedError
 
     @property
     @abstractmethod
@@ -14,6 +21,6 @@ class VisualizerPlugin(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def render(self, graph: Any) -> Any:
-        """Render a graph using this visualizer."""
+    def render(self, graph: Graph) -> str:
+        """Render a graph as HTML."""
         raise NotImplementedError
